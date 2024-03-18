@@ -1,7 +1,8 @@
-﻿namespace ConsoleApp1.Cargo;
+namespace ConsoleApp1.Cargo;
 
 public enum ProductType
 {
-    NORMAL,
-    DANGEROUS
+    VEGETABLE,
+    FRUIT,
+    FROZEN
 }

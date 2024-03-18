@@ -23,7 +23,7 @@ public class FluidContainer : BaseContainer<Fluid>, IHazardNotifier
     public override void LoadWeight(Fluid cargo)
     {
         if (cargo.Amount + loadedMass > capacity) throw new OverfillException();
-        if (cargo.ProductType == ProductType.DANGEROUS && cargo.Amount > capacity*0.5)
+        if (cargo.ProductSecurityType == ProductSecurityType.DANGEROUS && cargo.Amount > capacity*0.5)
         {
             NotifyHazard("You cant fill a container with dangerous cargo beyond 50% of the container capacity.");
         }

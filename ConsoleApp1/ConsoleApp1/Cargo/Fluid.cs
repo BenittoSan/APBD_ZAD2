@@ -2,8 +2,8 @@
 
 public class Fluid : Cargo
 {
-    public ProductType ProductType { get; set; }
-    public Fluid(string nameType, int amount, ProductType productType) : base(nameType, amount)
+    public ProductSecurityType ProductSecurityType { get; set; }
+    public Fluid(string nameType, int amount, ProductSecurityType productSecurityType) : base(nameType, amount)
     {
     }
     
