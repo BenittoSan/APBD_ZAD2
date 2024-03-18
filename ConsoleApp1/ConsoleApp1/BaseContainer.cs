@@ -5,13 +5,9 @@ namespace ConsoleApp1;
 public abstract class BaseContainer<T>
 {
     
-    /*private double loadMass; // w kg
-    private double height; // w cm
-    private double weightContainer; // w kg
-    private string nrSeries;
-    private double capacity; // w kg*/
+    
     private static int signature = 0;
-    public double loadMaxx { get; set; }
+    public double loadMaxx { get; set; } // Cargo Max
     public double height { get; set; }
     public double weightContainer { get; set; }
     public string _nrSeries { get; set; }

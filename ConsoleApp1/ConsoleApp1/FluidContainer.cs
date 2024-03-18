@@ -21,10 +21,18 @@ public class FluidContainer : BaseContainer<Fluid>, IHazardNotifier
 
     public override void LoadWeight(Fluid cargo)
     {
-        if (cargo.Amount > loadMaxx)
+        if (cargo.Amount + loadMaxx > capacity) throw new OverfillException();
+        if (cargo.ProductType == ProductType.DANGEROUS && cargo.Amount > loadMaxx*0.5)
         {
-            
+            NotifyHazard("You cant fill a container with dangerous cargo beyond 50% of the container capacity.");
         }
+        
+        if (cargo.Amount > loadMaxx * 0.9 )
+        {
+            NotifyHazard("The container cannot be filled with more than 90% of fluid");
+        }
+
+        loadMaxx = cargo.Amount;
     }
 
     public void NotifyHazard(string warning)
