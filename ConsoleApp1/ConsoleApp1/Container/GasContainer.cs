@@ -17,7 +17,8 @@ public class GasContainer : BaseContainer<Gas>, IHazardNotifier
 
     public override void UnloadWeight()
     {
-        loadedMass = 0;
+        loadedMass = this.loadedMass * 0.5;
+
     }
 
     public override void LoadWeight(Gas cargo)
