@@ -14,7 +14,7 @@ public class ContainerShip : IHazardNotifier
 
     }
 
-    public void AddContainer(BaseContainer<Type> Container)
+    public void AddContainer( BaseContainer<Type> Container)
     {
         if (ContainerList.Count >= MaxCountOfContainers)
         {
@@ -31,6 +31,41 @@ public class ContainerShip : IHazardNotifier
         }
     }
 
+    public void RemoveContainer( string NrSeries )
+    {
+        foreach (var baseContainer in ContainerList)
+        {
+            if ( baseContainer._nrSeries.Equals(NrSeries) )
+            {
+                ContainerList.Remove(baseContainer);
+            }
+        }
+        
+    }
+
+    public void SwapContainers(BaseContainer<Type> newContainer, string NrSeries)
+    {
+        AddContainer(newContainer);
+        RemoveContainer(NrSeries);
+    }
+
+    private BaseContainer<Type> GetContainerFromShip(string NrSeries)
+    {
+        foreach (var baseContainer in ContainerList)
+        {
+            if (baseContainer._nrSeries.Equals(NrSeries))
+            {
+                return baseContainer;
+            }
+        }
+
+        return null;
+    }
+
+    public void MoveContainerToOtherShip(string NrSeries, ContainerShip otherShip)
+    {
+        otherShip.AddContainer(this.GetContainerFromShip(NrSeries));
+    }
     public static void Main(string[] args)
     {
         LinkedList<BaseContainer<GasContainer>> a = new LinkedList<BaseContainer<GasContainer>>();
